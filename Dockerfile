@@ -13,7 +13,6 @@ ENV ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION
 # Install requirements
 RUN apk add \
         --no-cache \
-        --virtual=.build-dependencies \
         openssl wget curl tar gzip bash ca-certificates \
         # Ruby is required for reading CI_ENVIRONMENT_URL from .gitlab-ci.yml
         ruby git && \
@@ -36,7 +35,6 @@ RUN apk add \
     apk del glibc-i18n && \
     \
     rm "/root/.wget-hsts" && \
-    apk del .build-dependencies && \
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
