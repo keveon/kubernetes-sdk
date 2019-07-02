@@ -16,9 +16,7 @@ RUN apk add \
         openssl wget curl tar gzip bash ca-certificates \
         # Ruby is required for reading CI_ENVIRONMENT_URL from .gitlab-ci.yml
         ruby git && \
-    wget \
-        "https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub" \
-        -O "/etc/apk/keys/sgerrand.rsa.pub" && \
+    wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub && \
     wget \
         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BASE_URL/$ALPINE_GLIBC_PACKAGE_VERSION/$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
