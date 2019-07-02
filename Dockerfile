@@ -5,7 +5,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 ENV LANG=C.UTF-8
 ENV ALPINE_GLIBC_BASE_URL="https://github.com/sgerrand/alpine-pkg-glibc/releases/download"
-ENV ALPINE_GLIBC_PACKAGE_VERSION="2.27-r0"
+ENV ALPINE_GLIBC_PACKAGE_VERSION="2.29-r0"
 ENV ALPINE_GLIBC_BASE_PACKAGE_FILENAME="glibc-$ALPINE_GLIBC_PACKAGE_VERSION.apk"
 ENV ALPINE_GLIBC_BIN_PACKAGE_FILENAME="glibc-bin-$ALPINE_GLIBC_PACKAGE_VERSION.apk"
 ENV ALPINE_GLIBC_I18N_PACKAGE_FILENAME="glibc-i18n-$ALPINE_GLIBC_PACKAGE_VERSION.apk"
@@ -41,7 +41,7 @@ RUN apk add \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
 # Install Helm
-RUN curl https://storage.googleapis.com/kubernetes-helm/helm-v2.9.1-linux-amd64.tar.gz | tar zx && \
+RUN curl https://storage.googleapis.com/kubernetes-helm/helm-v2.14.1-linux-amd64.tar.gz | tar zx && \
     mv linux-amd64/helm /usr/bin/ && \
     helm version --client
 
